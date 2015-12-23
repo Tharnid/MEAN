@@ -1,9 +1,9 @@
 var express = require('express');
 
-var hi = 'hello';
+var app = express();
 
-if (true) {
-    console.log('hi');
-}
+var port = 1974;
 
-console.log(hi);
+app.listen(1974, function(err) {
+    console.log('Server running on port ' + port + '!!!');
+});

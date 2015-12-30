@@ -18,6 +18,10 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
+//app.get('/', function (req, res) {
+//    res.render('index', {list: 'Han', 'Chewy', });
+//});
+
 app.get('/books', function (req, res) {
     res.send('Hello Books!!!');
 });

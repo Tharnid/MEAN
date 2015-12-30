@@ -7,10 +7,15 @@ var app = express();
 var port = process.env.PORT || 1974;
 
 app.use(express.static('public'));
-app.use(express.static('src/views'));
+//app.use(express.static('src/views'));
+app.set('views', 'src/views');
+app.set('view engine', 'jade');
+
+// View Engine
+app.set('view engine')
 
 app.get('/', function (req, res) {
-    res.send('Hello Route!!!');
+    res.render('index');
 });
 
 app.get('/books', function (req, res) {

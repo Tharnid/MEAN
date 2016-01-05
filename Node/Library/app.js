@@ -2,24 +2,28 @@ var express = require('express');
 
 var app = express();
 
-//var port = 1974;
-
 var port = process.env.PORT || 1974;
+var bookRouter = express.Router();
 
 app.use(express.static('public'));
-//app.use(express.static('src/views'));
 app.set('views', './src/views');
-//app.set('view engine', 'jade');
-
-// handlebars
-//var handlebars = require('express-handlebars');
-//app.engine('.hbs', handlebars({extname: '.hbs'}));
 
 app.set('view engine', 'ejs');
 
-//app.get('/', function (req, res) {
-//    res.render('index', {title: 'Hello EJS and Tharnbrary!!!', list: ['Han', 'Lando', 'Chewy']});
-//});
+// Routing
+bookRouter.route('/')
+    .get(function(req, res) {
+        res.send('Hello...from Books!!!');
+    });
+
+bookRouter.route('/single')
+    .get(function(req, res) {
+        res.send('Hello...from a single book!!!');
+    });
+
+app.use('/Books', bookRouter);
+
+// Index
 
 app.get('/', function (req, res) {
     res.render('index', {
@@ -33,14 +37,6 @@ app.get('/', function (req, res) {
         }]
     });
 });
-
-//app.get('/', function (req, res) {
-//    res.render('index');
-//});
-
-//app.get('/', function (req, res) {
-//    res.render('index', {list: 'Han', 'Chewy', });
-//});
 
 app.get('/books', function (req, res) {
     res.send('Hello Books!!!');

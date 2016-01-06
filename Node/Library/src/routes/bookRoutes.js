@@ -30,27 +30,27 @@ var books = [
 ];
 
 // Routing
-bookRouter.route('/')
+var router = function(nav) {
+    bookRouter.route('/')
     .get(function (req, res) {
-        //res.send('Hello...from Books!!!');
-        res.render('books', {
+        res.render('bookListView', {
             title: 'Books',
-            nav: [{
-                Link: '/Books',
-                Text: 'Books'
-            },
-        {
-            Link: '/Authors',
-            Text: 'Authors'
-        }],
+            nav: nav,
             books: books
         });
     });
 
-bookRouter.route('/single')
+    bookRouter.route('/:id')
     .get(function (req, res) {
-        res.send('Hello...from a single book!!!');
+        var id = req.params.id;
+        res.render('bookView', {
+            title: 'Books',
+            nav: nav,
+            book: books[id]
+        });
     });
+    return bookRouter;
+};
 
 // export to gain access....module not modules
-module.exports = bookRouter;
+module.exports = router;

@@ -1,5 +1,7 @@
 var passport = require('passport');
 
+// MongoDB db.whatever.remove({}); || must have {} which is a query
+
 module.exports = function (app) {
     app.use(passport.initialize());
     app.use(passport.session());

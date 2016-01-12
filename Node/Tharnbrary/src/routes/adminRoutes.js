@@ -3,31 +3,55 @@ var adminRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 
 var books = [
-    {
-        title: 'Phoenix in Action',
-        genre: 'Programming',
-        author: 'Jason Terrell',
-        read: false
-    },
-    {
-        title: 'Elixir in Practice',
-        genre: 'Programming',
-        author: 'Tharnid Saldor',
-        read: false
-    },
-    {
-        title: 'Phoenix in Practice',
-        genre: 'Programming',
-        author: 'Jason Smith',
-        read: false
-    },
-    {
-        title: 'Elm in Action',
-        genre: 'Programming',
-        author: 'Dawn Nelson',
-        read: false
-    }
-];
+        {
+            title: 'War and Peace',
+            genre: 'Historical Fiction',
+            author: 'Lev Nikolayevich Tolstoy',
+            read: false
+        },
+        {
+            title: 'Les Misérables',
+            genre: 'Historical Fiction',
+            author: 'Victor Hugo',
+            read: false
+        },
+        {
+            title: 'The Time Machine',
+            genre: 'Science Fiction',
+            author: 'H. G. Wells',
+            read: false
+        },
+        {
+            title: 'A Journey into the Center of the Earth',
+            genre: 'Science Fiction',
+            author: 'Jules Verne',
+            read: false
+        },
+        {
+            title: 'The Dark World',
+            genre: 'Fantasy',
+            author: 'Henry Kuttner',
+            read: false
+        },
+        {
+            title: 'The Wind in the Willows',
+            genre: 'Fantasy',
+            author: 'Kenneth Grahame',
+            read: false
+        },
+        {
+            title: 'Life On The Mississippi',
+            genre: 'History',
+            author: 'Mark Twain',
+            read: false
+        },
+        {
+            title: 'Childhood',
+            genre: 'Biography',
+            author: 'Lev Nikolayevich Tolstoy',
+            read: false
+        }
+    ];
 
 var router = function (nav) {
     adminRouter.route('/addBooks')

@@ -10,11 +10,7 @@ var port = process.env.PORT || 1974;
 
 var nav = [{
                 Link: '/Books',
-                Text: 'Book'
-            },
-            {
-                Link: '/Authors',
-                Text: 'Author'
+                Text: 'Books'
             }
           ];
 
@@ -47,9 +43,6 @@ app.get('/', function (req, res) {
         nav: [{
             Link: '/Books',
             Text: 'Books'
-        }, {
-            Link: '/Authors',
-            Text: 'Authors'
         }]
     });
 });

@@ -36,15 +36,20 @@ var bookController = function(bookService, nav) {
                         _id: id
                     },
                     function (err, results) {
-                        bookService.getBookById(results.bookId,
+                        if (results.bookId) {
+                            bookService.getBookById(results.bookId,
                             function(err, book) {
-                            results.book = book;
-                            res.render('bookView', {
-                                title: 'Books',
-                                nav: nav,
-                                book: results
+                                results.book = book;
+
                             });
-                        });
+                        }
+                        else {
+                            res.render('bookView', {
+                                    title: 'Books',
+                                    nav: nav,
+                                    book: results
+                                });
+                        }
                     }
                 );
 
@@ -59,3 +64,4 @@ var bookController = function(bookService, nav) {
 };
 
 module.exports = bookController;
+

@@ -2,17 +2,17 @@ var http = require('http');
 var xml2js = require('xml2js');
 var parser = xml2js.Parser({explicitArray: false});
 
-var goodreadsService = function() {
+var goodreadsService = function () {
 
-    var getBookById = function(id, cb) {
-        
-        var options = function(id, cb) {
+    var getBookById = function (id, cb) {
+        var options = {
             host: 'www.goodreads.com',
-            path: '/book/show/656?format=xml&key=A3ZwnoAlQSudKqDHWXgVYg'
-        };       
+            path: '/book/show/' + id + '?format=xml&key=A3ZwnoAlQSudKqDHWXgVYg'
+        };
+
         var callback = function(response) {
             var str = '';
-            
+
             response.on('data', function(chunk) {
                 str += chunk;
             });
@@ -20,13 +20,12 @@ var goodreadsService = function() {
                 console.log(str);
                 parser.parseString(str,
                     function(err, result) {
-                        cb(null, 
+                        cb(null,
                            result.GoodreadsResponse.book);
-                });
+                    });
             });
         };
-//        cb(null, {description: 'Your bleeping description'});
-        
+
         http.request(options, callback).end();
     };
 

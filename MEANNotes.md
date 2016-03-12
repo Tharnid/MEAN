@@ -1,0 +1,8 @@
+# MEAN Notes
+---
+
+	npm start
+
+
+
+---

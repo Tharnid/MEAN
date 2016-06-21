@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI = 'mongodb://localhost/';
+var dbURI = 'mongodb://localhost/Loc8r';
 mongoose.connect(dbURI);
 
 // Readline stuff
@@ -57,3 +57,6 @@ process.on('SIGTERM', function() {
        process.exit(0);
    }) ;
 });
+
+// Bring in you schemas and models
+require('./locations');

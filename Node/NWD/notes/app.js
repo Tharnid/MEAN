@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var notes = require('./routes/notes');
+// var users = require('./routes/users');
 
 var app = express();
 
@@ -22,8 +23,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use('../bower_components/bootstrap/dist/css/bootstrap.min.css', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'css')));
+// app.use('../bower_components/bootstrap/dist/fonts', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'fonts')));
+// app.use('../bower_components/bootstrap/dist//js', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'js')));
+// app.use('../bower_components/jquery/dist/jquery', express.static(path.join(__dirname, 'bower_components', 'jquery', 'dist')));
+
+app.use('/vendor/bootstrap/css', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'css')));
+app.use('/vendor/bootstrap/fonts', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'fonts')));
+app.use('/vendor/bootstrap/js', express.static(path.join(__dirname, 'bower_components', 'bootstrap', 'dist', 'js')));
+app.use('/vendor/jquery', express.static(path.join(__dirname, 'bower_components', 'jquery', 'dist')));
+
 app.use('/', routes);
-app.use('/users', users);
+// app.use('/users', users);
+app.use('/notes', notes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

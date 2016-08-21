@@ -16,12 +16,13 @@ router.get('/', function(req, res, next) {
         var keyPromises = keylist.map(key => {
                 return notes.read(key).then(note => {
                     return { key: note.key, title: note.title };
-});
-});
+})
+})
     return Promise.all(keyPromises);
 })
     .then(notelist => {
-        log('HOMEPAGE notelist='+ util.inspect(notelist));
+        log('HOMEPAGE notelist='+util.inspect(notelist)
+    )
     res.render('index', {
         title: 'Notes',
         notelist: notelist,
@@ -30,7 +31,10 @@ router.get('/', function(req, res, next) {
         ]
     });
 })
-    .catch(err => { error(err); next(err); });
-});
+    .
+    catch(err => {error(err);
+    next(err);
+})
+});;
 
 module.exports = router;

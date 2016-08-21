@@ -15,8 +15,8 @@ function notesDir() {
             fs.ensureDir(dir, err => {
             if (err) reject(err);
 else resolve(dir);
-});
-});
+})
+})
 }
 
 function filePath(notesdir, key) {
@@ -30,8 +30,8 @@ function readJSON(notesdir, key) {
             if (err) return reject(err);
     log('readJSON '+ data);
     resolve(Note.fromJSON(data));
-});
-});
+})
+})
 }
 
 exports.update = exports.create = function(key, title, body) {
@@ -45,19 +45,20 @@ exports.update = exports.create = function(key, title, body) {
             fs.writeFile(writeTo, writeJSON, 'utf8', err => {
             if (err) reject(err);
     else resolve(note);
-});
-});
-});
-};
+})
+})
+})
+};;
 
 exports.read = function(key) {
     return notesDir().then(notesdir => {
             return readJSON(notesdir, key).then(thenote => {
-                log('READ '+ notesdir +'/'+ key +' '+ util.inspect(thenote));
+                log('READ '+notesdir + '/' + key + ' ' + util.inspect(thenote)
+    )
     return thenote;
-});
-});
-};
+})
+})
+};;
 
 exports.destroy = function(key) {
     return notesDir().then(notesdir => {
@@ -65,9 +66,9 @@ exports.destroy = function(key) {
                 fs.unlink(filePath(notesdir, key), err => {
                 if (err) reject(err);
     else resolve();
-});
-});
-});
+})
+})
+})
 };
 
 exports.keylist = function() {
@@ -77,21 +78,22 @@ exports.keylist = function() {
                 if (err) return reject(err);
     if (!filez) filez = [];
     resolve({ notesdir, filez });
-});
-});
+})
+})
 })
     .then(data => {
-        log('keylist dir='+ data.notesdir +' files='+ util.inspect(data.filez));
+        log('keylist dir='+data.notesdir + ' files=' + util.inspect(data.filez)
+    )
     var thenotes = data.filez.map(fname => {
             var key = path.basename(fname, '.json');
     log('About to READ '+ key);
     return readJSON(data.notesdir, key).then(thenote => {
             return thenote.key;
-});
-});
+})
+})
     return Promise.all(thenotes);
-});
-};
+})
+};;
 
 exports.count   = function()    {
     return notesDir().then(notesdir => {
@@ -99,7 +101,7 @@ exports.count   = function()    {
                 fs.readdir(notesdir, (err, filez) => {
                 if (err) return reject(err);
     resolve(filez.length);
-});
-});
-});
+})
+})
+})
 };

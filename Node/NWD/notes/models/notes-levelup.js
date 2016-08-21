@@ -21,8 +21,8 @@ function connectDB() {
         if (err) return reject(err);
             db = _db;
             resolve();
-        });
-    });
+})
+})
 }
 
 exports.update = exports.create = function(key, title, body) {
@@ -32,9 +32,9 @@ exports.update = exports.create = function(key, title, body) {
             db.put(key, note, err => {
             if (err) reject(err);
     else resolve(note);
-});
-});
-});
+})
+})
+})
 };
 
 exports.read = function(key) {
@@ -43,9 +43,9 @@ exports.read = function(key) {
                 db.get(key, (err, note) => {
                 if (err) reject(err);
     else resolve(new Note(note.key, note.title, note.body));
-});
-});
-});
+})
+})
+})
 };
 
 exports.destroy = function(key) {
@@ -54,9 +54,9 @@ exports.destroy = function(key) {
                 db.del(key, err => {
                 if (err) reject(err);
     else resolve();
-});
-});
-});
+})
+})
+})
 };
 
 exports.keylist = function() {
@@ -66,10 +66,12 @@ exports.keylist = function() {
             db.createReadStream()
             .on('data', data => keyz.push(data.key))
     .on('error', err => reject(err))
-    .on('end',   ()  => resolve(keyz));
-});
-});
-};
+    .
+    on('end', () = > resolve(keyz)
+    )
+})
+})
+};;;;
 
 exports.count = function() {
     return connectDB().then(() => {
@@ -78,7 +80,9 @@ exports.count = function() {
             db.createReadStream()
             .on('data', data => total++)
     .on('error', err => reject(err))
-    .on('end',   ()  => resolve(total));
-});
-});
-};
+    .
+    on('end', () = > resolve(total)
+    )
+})
+})
+};;;;

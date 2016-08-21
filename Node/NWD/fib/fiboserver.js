@@ -7,12 +7,13 @@ app.use(logger('dev'));
 
 app.get('/fibonacci/:n', (req, res, next) => {
    math.fibonacciAsync(Math.floor(req.params.n), (err,val) =>{
-        if (err) next('FIBO SERVER ERROR ' + err);
-        else {
+    if (err) next('FIBO SERVER ERROR ' +err
+)
+else {
             res.send({
                 n: req.params.n,
                 result: val
             });
         }
-    });
-});
+})
+})

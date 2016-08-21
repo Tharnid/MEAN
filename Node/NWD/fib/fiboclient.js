@@ -15,7 +15,7 @@ var req = http.request({
     }, res => {
         res.on('data', chunk => {
         util.log('BODY: ' + chunk);
-        });
-    });
-    req.end();
-});
+})
+})
+req.end();
+})

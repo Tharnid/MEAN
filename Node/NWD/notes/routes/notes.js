@@ -22,7 +22,7 @@ router.get('/add', (req, res, next) => {
     ],
     hideAddNote: true
 });
-});
+})
 
 // Save Note (update)
 router.post('/save', (req, res, next) => {
@@ -37,8 +37,10 @@ if (req.body.docreate === "create") {
 p.then(note => {
     res.redirect('/notes/view?key='+ req.body.notekey);
 })
-.catch(err => { next(err); });
-});
+.
+catch(err => {next(err);
+})
+})
 
 // Read Note (read)
 router.get('/view', (req, res, next) => {
@@ -54,8 +56,10 @@ router.get('/view', (req, res, next) => {
     ]
 });
 })
-.catch(err => { next(err); });
-});
+.
+catch(err => {next(err);
+})
+})
 
 // Edit note (update)
 router.get('/edit', (req, res, next) => {
@@ -73,8 +77,10 @@ router.get('/edit', (req, res, next) => {
     ]
 });
 })
-.catch(err => { next(err); });
-});
+.
+catch(err => {next(err);
+})
+})
 
 // Ask to Delete note (destroy)
 router.get('/destroy', (req, res, next) => {
@@ -90,14 +96,17 @@ router.get('/destroy', (req, res, next) => {
     ]
 });
 })
-.catch(err => { next(err); });
-});
+.
+catch(err => {next(err);
+})
+})
 
 // Really destroy note (destroy)
 router.post('/destroy/confirm', (req, res, next) => {
     notes.destroy(req.body.notekey)
     .then(() => { res.redirect('/'); })
-.catch(err => { next(err); });
-});
-
+.
+catch(err => {next(err);
+})
+})
 module.exports = router;
